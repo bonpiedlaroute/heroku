@@ -28,14 +28,14 @@ function loadJSON(path, success, error) {
   }
 
 
-  //const url = 'http://surfyn.xyz/search/id'+ window.location.search;
-  const url = 'http://127.0.0.1:7878/search/id'+ window.location.search;
+  //const url = 'http://surfyn.xyz/search/ad?id='+ window.location.search.substr(1);
+  const url = 'http://127.0.0.1:7878/search/ad?id='+ window.location.search.substr(1);
 
 
   fetch(url)
   .then(function(resp) { return resp.json(); } )
   .then(function(data) {
-    console.log("success of fetch");
+
     generate_details_page(data);
 
   })
@@ -50,12 +50,9 @@ function loadJSON(path, success, error) {
 
 function generate_details_page(data)
 {
-  console.log("generate details page");
 
   if(data.length == 0)
   {
-    console.log("no data");
-    console.log("no data");
     var announces_found = document.getElementById("nb_announces_found");
     announces_found.innerHTML = " 0 ";
 
@@ -67,7 +64,6 @@ function generate_details_page(data)
   }
   else
   {
-    console.log("there is " + data.length + "data");
     var nb_similar = document.getElementById("nb_announces_found");
     nb_similar.innerHTML = " " + data.length + " ";
 
